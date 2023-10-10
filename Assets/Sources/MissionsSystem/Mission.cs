@@ -1,6 +1,6 @@
 namespace Sources.MissionsSystem
 {
-    public sealed class Mission : IMission
+    internal sealed class Mission : IMission
     {
         public Mission(string playerName, string enemyName, string description, string playingDescription,
             int pointsAmount, MissionStatus status)
