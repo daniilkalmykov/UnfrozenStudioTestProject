@@ -5,7 +5,7 @@ namespace Sources.HeroesSystem
         string Name { get; }
         int PointsAmount { get; }
 
-        void AddPoints();
-        void ReducePoints();
+        void AddPoints(int points);
+        void ReducePoints(int points);
     }
 }
