@@ -33,9 +33,6 @@ namespace Sources.MissionsSystem
 
         public void SetNewStatus(MissionStatus status)
         {
-            if (Status == status)
-                throw new ArgumentException();
-            
             Status = status;
         }
     }

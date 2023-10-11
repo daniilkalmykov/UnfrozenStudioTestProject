@@ -32,7 +32,9 @@ namespace Sources.CompositeRoot
                 _missionsToUnlock.Select(root => root.Mission).ToList());
             
             _gameButton = GetComponent<GameButton>();
-
+            
+            _gameButton.Init();
+            
             _gameButton.Button.interactable = _mission.IsAvailable();
             _gameButton.Clicked += OnClicked;
         }
