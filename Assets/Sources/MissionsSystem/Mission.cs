@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Assembly-Csharp")]
 namespace Sources.MissionsSystem
 {
     internal sealed class Mission : IMission
     {
-        private readonly List<Mission> _missionsToUnlock;
+        private readonly List<IMission> _missionsToUnlock;
         
         public Mission(string description, string playingDescription,
-            int pointsAmount, MissionStatus status, List<Mission> missionsToUnlock)
+            int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock)
         {
-            Description = description;
-            PlayingDescription = playingDescription;
+            Description = description ?? throw new ArgumentNullException();
+            PlayingDescription = playingDescription ?? throw new ArgumentNullException();
             PointsAmount = pointsAmount;
             Status = status;
             _missionsToUnlock = missionsToUnlock;
@@ -25,8 +27,8 @@ namespace Sources.MissionsSystem
 
         public bool IsAvailable()
         {
-            return _missionsToUnlock.All(
-                mission => mission.Status is MissionStatus.Available or MissionStatus.Completed);
+            return _missionsToUnlock == null || _missionsToUnlock.All(mission =>
+                mission.Status is MissionStatus.Available or MissionStatus.Completed);
         }
 
         public void SetNewStatus(MissionStatus status)
