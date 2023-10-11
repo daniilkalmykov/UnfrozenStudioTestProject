@@ -1,33 +1,35 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
+[assembly: InternalsVisibleTo("Assembly-Csharp")]
 namespace Sources.Views
 {
     [RequireComponent(typeof(Button))]
     internal sealed class GameButton : MonoBehaviour
     {
-        private Button _button;
+        public Button Button { get; private set; }
 
         public event Action Clicked; 
 
         private void OnEnable()
         {
-            if (_button != null)
-                _button.onClick.AddListener(() => Clicked?.Invoke());
+            if (Button != null)
+                Button.onClick.AddListener(() => Clicked?.Invoke());
         }
 
         private void OnDisable()
         {
-            if (_button != null)
-                _button.onClick.RemoveListener(() => Clicked?.Invoke());
+            if (Button != null)
+                Button.onClick.RemoveListener(() => Clicked?.Invoke());
         }
 
         public void Init()
         {
-            _button = GetComponent<Button>();
+            Button = GetComponent<Button>();
 
-            _button.onClick.AddListener(() => Clicked?.Invoke());
+            Button.onClick.AddListener(() => Clicked?.Invoke());
         }
     }
 }

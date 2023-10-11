@@ -28,7 +28,7 @@ namespace Sources.MissionsSystem
         public bool IsAvailable()
         {
             return _missionsToUnlock == null || _missionsToUnlock.All(mission =>
-                mission.Status is MissionStatus.Available or MissionStatus.Completed);
+                mission.Status is MissionStatus.Completed);
         }
 
         public void SetNewStatus(MissionStatus status)
