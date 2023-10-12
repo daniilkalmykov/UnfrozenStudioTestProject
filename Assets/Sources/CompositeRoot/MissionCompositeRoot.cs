@@ -3,7 +3,6 @@ using System.Linq;
 using Sources.MissionsSystem;
 using Sources.Views;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Sources.CompositeRoot
 {
@@ -16,7 +15,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private int _pointsAmount;
         [SerializeField] private MissionStatus _status;
         [SerializeField] private List<MissionCompositeRoot> _missionsToUnlock;
-        [SerializeField] private Image _infoPanel;
+        [SerializeField] private MissionInfoPanelView _infoPanel;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -63,6 +62,7 @@ namespace Sources.CompositeRoot
             _mission.SetNewStatus(MissionStatus.Completed);
 
             _infoPanel.gameObject.SetActive(true);
+            _infoPanel.Set(_mission);
             //_mission.Complete();
         }
     }
