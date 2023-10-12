@@ -180,9 +180,7 @@ MonoBehaviour:
   _playingDescription: a
   _pointsAmount: 1
   _status: 1
-  _missionsToUnlock:
-  - {fileID: 243199678}
-  - {fileID: 1294757069}
+  _missionsToUnlock: []
 --- !u!114 &193320728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +370,8 @@ MonoBehaviour:
   _playingDescription: 
   _pointsAmount: 1
   _status: 0
-  _missionsToUnlock: []
+  _missionsToUnlock:
+  - {fileID: 1294757069}
 --- !u!114 &243199679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,7 +760,7 @@ MonoBehaviour:
   _pointsAmount: 1
   _status: 1
   _missionsToUnlock:
-  - {fileID: 243199678}
+  - {fileID: 193320727}
 --- !u!114 &1294757070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,9 +900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compositeRoots:
-  - {fileID: 243199678}
-  - {fileID: 1294757069}
   - {fileID: 193320727}
+  - {fileID: 1294757069}
+  - {fileID: 243199678}
 --- !u!1 &1670378272
 GameObject:
   m_ObjectHideFlags: 0

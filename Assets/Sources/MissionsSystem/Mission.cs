@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-Csharp")]
@@ -20,20 +19,26 @@ namespace Sources.MissionsSystem
             _missionsToUnlock = missionsToUnlock;
         }
 
+        public event Action StatusChanged;
+        
         public string Description { get; }
         public string PlayingDescription { get; }
         public int PointsAmount { get; }
         public MissionStatus Status { get; private set; }
 
-        public bool IsAvailable()
-        {
-            return _missionsToUnlock == null || _missionsToUnlock.All(mission =>
-                mission.Status is MissionStatus.Completed);
-        }
-
-        public void SetNewStatus(MissionStatus status)
+        public void TrySetNewStatus(MissionStatus status)
         {
             Status = status;
+            
+            StatusChanged?.Invoke();
+        }
+
+        public void UnlockNextMissions()
+        {
+            foreach (var mission in _missionsToUnlock)
+            {
+                mission?.TrySetNewStatus(MissionStatus.Available);
+            }
         }
     }
 }
