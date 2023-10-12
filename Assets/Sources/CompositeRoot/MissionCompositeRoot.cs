@@ -55,8 +55,8 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _mission.TrySetNewStatus(MissionStatus.Completed);
-            _mission.UnlockNextMissions();
+            _mission.SetNewStatus(MissionStatus.Completed);
+            //_mission.Complete();
         }
     }
 }

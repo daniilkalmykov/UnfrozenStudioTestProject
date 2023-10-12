@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Sources.HeroesSystem;
 
 [assembly: InternalsVisibleTo("Assembly-Csharp")]
 namespace Sources.MissionsSystem
@@ -8,13 +9,14 @@ namespace Sources.MissionsSystem
     internal sealed class Mission : IMission
     {
         private readonly List<IMission> _missionsToUnlock;
+        private readonly int _pointsAmount;
         
         public Mission(string description, string playingDescription,
             int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock)
         {
             Description = description ?? throw new ArgumentNullException();
             PlayingDescription = playingDescription ?? throw new ArgumentNullException();
-            PointsAmount = pointsAmount;
+            _pointsAmount = pointsAmount;
             Status = status;
             _missionsToUnlock = missionsToUnlock;
         }
@@ -23,20 +25,21 @@ namespace Sources.MissionsSystem
         
         public string Description { get; }
         public string PlayingDescription { get; }
-        public int PointsAmount { get; }
         public MissionStatus Status { get; private set; }
 
-        public void TrySetNewStatus(MissionStatus status)
+        public void SetNewStatus(MissionStatus status)
         {
             Status = status;
             
             StatusChanged?.Invoke();
         }
 
-        public void UnlockNextMissions()
+        public void Complete(IHero hero)
         {
             foreach (var mission in _missionsToUnlock)
-                mission?.TrySetNewStatus(MissionStatus.Available);
+                mission?.SetNewStatus(MissionStatus.Available);
+
+            hero.AddPoints(_pointsAmount);
         }
     }
 }
