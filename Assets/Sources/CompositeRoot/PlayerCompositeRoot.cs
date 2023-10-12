@@ -8,7 +8,7 @@ namespace Sources.CompositeRoot
     {
         private List<Hero> _heroes = new();
 
-        public IHero CurrentHero { get; private set; } = null;
+        public IHero CurrentHero { get; private set; }
 
         public void TrySetCurrentHero(IHero hero)
         {
