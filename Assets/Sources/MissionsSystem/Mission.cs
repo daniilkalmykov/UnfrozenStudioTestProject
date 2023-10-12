@@ -12,17 +12,19 @@ namespace Sources.MissionsSystem
         private readonly int _pointsAmount;
         
         public Mission(string description, string playingDescription,
-            int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock)
+            int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock, string name)
         {
             Description = description ?? throw new ArgumentNullException();
             PlayingDescription = playingDescription ?? throw new ArgumentNullException();
             _pointsAmount = pointsAmount;
             Status = status;
             _missionsToUnlock = missionsToUnlock;
+            Name = name ?? throw new ArgumentNullException();
         }
 
         public event Action StatusChanged;
         
+        public string Name { get; }
         public string Description { get; }
         public string PlayingDescription { get; }
         public MissionStatus Status { get; private set; }

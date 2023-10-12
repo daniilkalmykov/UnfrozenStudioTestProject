@@ -3,17 +3,20 @@ using System.Linq;
 using Sources.MissionsSystem;
 using Sources.Views;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sources.CompositeRoot
 {
     [RequireComponent(typeof(GameButton))]
     internal sealed class MissionCompositeRoot : CompositeRoot
     {
+        [SerializeField] private string _name;
         [SerializeField] private string _description;
         [SerializeField] private string _playingDescription;
         [SerializeField] private int _pointsAmount;
         [SerializeField] private MissionStatus _status;
         [SerializeField] private List<MissionCompositeRoot> _missionsToUnlock;
+        [SerializeField] private Image _infoPanel;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -28,10 +31,12 @@ namespace Sources.CompositeRoot
 
         public override void Compose()
         {
+            _infoPanel.gameObject.SetActive(false);
+            
             var missions = _missionsToUnlock.Select(missionCompositeRoot => missionCompositeRoot._mission)
                 .Cast<IMission>().ToList();
 
-            _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions);
+            _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name);
             
             _mission.StatusChanged += OnStatusChanged;
             
@@ -56,6 +61,8 @@ namespace Sources.CompositeRoot
         private void OnClicked()
         {
             _mission.SetNewStatus(MissionStatus.Completed);
+
+            _infoPanel.gameObject.SetActive(true);
             //_mission.Complete();
         }
     }
