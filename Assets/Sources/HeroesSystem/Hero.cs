@@ -1,5 +1,7 @@
 using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Assembly-Csharp")]
 namespace Sources.HeroesSystem
 {
     internal sealed class Hero : IHero

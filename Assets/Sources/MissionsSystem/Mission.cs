@@ -36,9 +36,7 @@ namespace Sources.MissionsSystem
         public void UnlockNextMissions()
         {
             foreach (var mission in _missionsToUnlock)
-            {
                 mission?.TrySetNewStatus(MissionStatus.Available);
-            }
         }
     }
 }
