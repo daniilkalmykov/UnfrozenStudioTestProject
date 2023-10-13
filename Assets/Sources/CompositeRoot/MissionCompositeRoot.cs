@@ -18,6 +18,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private List<MissionCompositeRoot> _missionsToUnlock;
         [SerializeField] private MissionInfoPanelView _infoPanel;
         [SerializeField] private string _enemyHeroName;
+        [SerializeField] private LevelCompositeRoot _levelCompositeRoot;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -66,6 +67,8 @@ namespace Sources.CompositeRoot
 
             _infoPanel.gameObject.SetActive(true);
             _infoPanel.Set(_mission);
+
+            _levelCompositeRoot.Level.SetCurrentMission(_mission);
             //_mission.Complete();
         }
     }
