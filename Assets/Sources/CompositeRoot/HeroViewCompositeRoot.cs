@@ -42,7 +42,7 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _playerCompositeRoot.TrySetCurrentHero(_hero);
+            _playerCompositeRoot.TryAddHero(_hero);
         }
     }
 }

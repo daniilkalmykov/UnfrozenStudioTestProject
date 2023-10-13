@@ -6,17 +6,24 @@ namespace Sources.CompositeRoot
 {
     internal sealed class PlayerCompositeRoot : CompositeRoot
     {
+        private readonly List<IHero> _currentHeroes = new();
+        
         private List<Hero> _heroes = new();
 
         public event Action HeroSet;
-        
-        public IHero CurrentHero { get; private set; }
 
-        public void TrySetCurrentHero(IHero hero)
+        public IEnumerable<IHero> CurrentHeroes => _currentHeroes;
+
+        public void TryAddHero(IHero newHero)
         {
-            CurrentHero = hero ?? throw new ArgumentNullException();
+            _currentHeroes.Add(newHero ?? throw new ArgumentNullException());
             
             HeroSet?.Invoke();
+        }
+        
+        public void ClearCurrentHeroes()
+        {
+            _currentHeroes.Clear();
         }
         
         public override void Compose()

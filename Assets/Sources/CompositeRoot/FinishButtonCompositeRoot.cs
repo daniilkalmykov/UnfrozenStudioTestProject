@@ -34,7 +34,9 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _levelCompositeRoot.Level.CurrentMission.Complete(_playerCompositeRoot.CurrentHero);
+            _levelCompositeRoot.Level.CurrentMission.Complete(_playerCompositeRoot.CurrentHeroes);
+
+            _playerCompositeRoot.ClearCurrentHeroes();
             _missionScreenView.gameObject.SetActive(false);
         }
     }

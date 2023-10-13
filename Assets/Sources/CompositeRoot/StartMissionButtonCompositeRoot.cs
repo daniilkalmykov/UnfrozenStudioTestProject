@@ -41,7 +41,7 @@ namespace Sources.CompositeRoot
             _gameButton.Button.interactable = false;
             
             _missionScreen.gameObject.SetActive(true);
-            _missionScreen.Show(_playerCompositeRoot.CurrentHero, _levelCompositeRoot.Level.CurrentMission);
+            _missionScreen.Show(_playerCompositeRoot.CurrentHeroes, _levelCompositeRoot.Level.CurrentMission);
             
             _missionInfoPanelView.gameObject.SetActive(false);
         }

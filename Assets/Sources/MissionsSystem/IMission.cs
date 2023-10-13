@@ -11,6 +11,6 @@ namespace Sources.MissionsSystem
         IEnumerable<IHero> EnemyHeroes { get; }
         
         void SetNewStatus(MissionStatus status);
-        void Complete(IHero playerHero);
+        void Complete(IEnumerable<IHero> heroes);
     }
 }

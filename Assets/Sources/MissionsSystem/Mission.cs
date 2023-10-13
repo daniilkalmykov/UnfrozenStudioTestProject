@@ -40,12 +40,13 @@ namespace Sources.MissionsSystem
             StatusChanged?.Invoke();
         }
 
-        public void Complete(IHero hero)
+        public void Complete(IEnumerable<IHero> heroes)
         {
             foreach (var mission in _missionsToUnlock)
                 mission?.SetNewStatus(MissionStatus.Available);
 
-            hero.AddPoints(_pointsAmount);
+            foreach (var hero in heroes)
+                hero.AddPoints(_pointsAmount);
         }
     }
 }
