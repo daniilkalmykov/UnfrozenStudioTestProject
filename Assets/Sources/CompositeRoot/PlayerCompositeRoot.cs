@@ -20,6 +20,8 @@ namespace Sources.CompositeRoot
             
             HeroSet?.Invoke();
         }
+
+        public int GetAmountOfHeroes() => _currentHeroes.Count;
         
         public void ClearCurrentHeroes()
         {

@@ -19,6 +19,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private MissionInfoPanelView _infoPanel;
         [SerializeField] private string[] _enemyHeroNames;
         [SerializeField] private LevelCompositeRoot _levelCompositeRoot;
+        [SerializeField] private int _playerHeroesAmount;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -42,7 +43,7 @@ namespace Sources.CompositeRoot
                 .Cast<IMission>().ToList();
 
             _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name,
-                enemyHeroes);
+                enemyHeroes, _playerHeroesAmount);
             
             _mission.StatusChanged += OnStatusChanged;
             

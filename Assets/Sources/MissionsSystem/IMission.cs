@@ -9,6 +9,7 @@ namespace Sources.MissionsSystem
         string Description { get; }
         string PlayingDescription { get; }
         IEnumerable<IHero> EnemyHeroes { get; }
+        int PlayerHeroesAmount { get; }
         
         void SetNewStatus(MissionStatus status);
         void Complete(IEnumerable<IHero> heroes);

@@ -48,7 +48,8 @@ namespace Sources.CompositeRoot
 
         private void OnHeroSet()
         {
-            _gameButton.Button.interactable = true;
+            _gameButton.Button.interactable = _levelCompositeRoot.Level.CurrentMission.PlayerHeroesAmount ==
+                                              _playerCompositeRoot.GetAmountOfHeroes();
         }
     }
 }
