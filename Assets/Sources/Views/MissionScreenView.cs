@@ -11,10 +11,10 @@ namespace Sources.Views
         [SerializeField] private TMP_Text _enemyHeroes;
         [SerializeField] private TMP_Text _description;
 
-        public void Show(IHero playerHero, IHero enemyHero, IMission mission)
+        public void Show(IHero playerHero, IMission mission)
         {
             _playerHeroes.text = playerHero.Name;
-            _enemyHeroes.text = enemyHero.Name;
+            _enemyHeroes.text = mission.EnemyHero.Name;
             _description.text = mission.PlayingDescription;
         }
     }
