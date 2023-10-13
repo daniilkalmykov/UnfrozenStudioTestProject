@@ -1,13 +1,12 @@
 using Sources.Views;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Sources.CompositeRoot
 {
     [RequireComponent(typeof(GameButton))]
     internal sealed class StartMissionButtonCompositeRoot : CompositeRoot
     {
-        [SerializeField] private Image _missionScreen;
+        [SerializeField] private MissionScreenView _missionScreen;
         [SerializeField] private PlayerCompositeRoot _playerCompositeRoot;
         [SerializeField] private MissionInfoPanelView _missionInfoPanelView;
         
@@ -41,6 +40,8 @@ namespace Sources.CompositeRoot
             _gameButton.Button.interactable = false;
             
             _missionScreen.gameObject.SetActive(true);
+            //_missionScreen.Show(_playerCompositeRoot.CurrentHero, );
+            
             _missionInfoPanelView.gameObject.SetActive(false);
         }
 

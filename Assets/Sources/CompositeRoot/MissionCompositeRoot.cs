@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Sources.HeroesSystem;
 using Sources.MissionsSystem;
 using Sources.Views;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private MissionStatus _status;
         [SerializeField] private List<MissionCompositeRoot> _missionsToUnlock;
         [SerializeField] private MissionInfoPanelView _infoPanel;
+        [SerializeField] private string _enemyHeroName;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -35,7 +37,8 @@ namespace Sources.CompositeRoot
             var missions = _missionsToUnlock.Select(missionCompositeRoot => missionCompositeRoot._mission)
                 .Cast<IMission>().ToList();
 
-            _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name);
+            _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name,
+                new Hero(_enemyHeroName, 0));
             
             _mission.StatusChanged += OnStatusChanged;
             

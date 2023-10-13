@@ -12,7 +12,7 @@ namespace Sources.MissionsSystem
         private readonly int _pointsAmount;
         
         public Mission(string description, string playingDescription,
-            int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock, string name)
+            int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock, string name, IHero enemyHero)
         {
             Description = description ?? throw new ArgumentNullException();
             PlayingDescription = playingDescription ?? throw new ArgumentNullException();
@@ -20,6 +20,7 @@ namespace Sources.MissionsSystem
             Status = status;
             _missionsToUnlock = missionsToUnlock;
             Name = name ?? throw new ArgumentNullException();
+            EnemyHero = enemyHero ?? throw new ArgumentNullException();
         }
 
         public event Action StatusChanged;
@@ -27,6 +28,7 @@ namespace Sources.MissionsSystem
         public string Name { get; }
         public string Description { get; }
         public string PlayingDescription { get; }
+        public IHero EnemyHero { get; }
         public MissionStatus Status { get; private set; }
 
         public void SetNewStatus(MissionStatus status)

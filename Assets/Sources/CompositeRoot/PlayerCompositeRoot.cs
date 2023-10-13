@@ -21,7 +21,7 @@ namespace Sources.CompositeRoot
         
         public override void Compose()
         {
-            
+            //Init heroes from xml
         }
     }
 }
