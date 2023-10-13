@@ -10,5 +10,6 @@ namespace Sources.MissionsSystem
         IHero EnemyHero { get; }
         
         void SetNewStatus(MissionStatus status);
+        void Complete(IHero playerHero);
     }
 }
