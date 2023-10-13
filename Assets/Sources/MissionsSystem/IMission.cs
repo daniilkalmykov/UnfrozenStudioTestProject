@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sources.HeroesSystem;
 
 namespace Sources.MissionsSystem
@@ -7,7 +8,7 @@ namespace Sources.MissionsSystem
         string Name { get; }
         string Description { get; }
         string PlayingDescription { get; }
-        IHero EnemyHero { get; }
+        IEnumerable<IHero> EnemyHeroes { get; }
         
         void SetNewStatus(MissionStatus status);
         void Complete(IHero playerHero);

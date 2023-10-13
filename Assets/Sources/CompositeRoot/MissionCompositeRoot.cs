@@ -17,7 +17,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private MissionStatus _status;
         [SerializeField] private List<MissionCompositeRoot> _missionsToUnlock;
         [SerializeField] private MissionInfoPanelView _infoPanel;
-        [SerializeField] private string _enemyHeroName;
+        [SerializeField] private string[] _enemyHeroNames;
         [SerializeField] private LevelCompositeRoot _levelCompositeRoot;
 
         private Mission _mission;
@@ -34,12 +34,15 @@ namespace Sources.CompositeRoot
         public override void Compose()
         {
             _infoPanel.gameObject.SetActive(false);
+
+            var enemyHeroes =
+                new List<IHero>(_enemyHeroNames.Select(enemyHeroName => new Hero(enemyHeroName, 0)).ToList());
             
             var missions = _missionsToUnlock.Select(missionCompositeRoot => missionCompositeRoot._mission)
                 .Cast<IMission>().ToList();
 
             _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name,
-                new Hero(_enemyHeroName, 0));
+                enemyHeroes);
             
             _mission.StatusChanged += OnStatusChanged;
             

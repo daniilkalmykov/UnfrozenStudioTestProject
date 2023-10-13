@@ -518,7 +518,7 @@ MonoBehaviour:
   _status: 1
   _missionsToUnlock: []
   _infoPanel: {fileID: 247415449}
-  _enemyHeroName: 
+  _enemyHeroNames: []
   _levelCompositeRoot: {fileID: 624564228}
 --- !u!114 &193320728
 MonoBehaviour:
@@ -728,7 +728,9 @@ MonoBehaviour:
   _missionsToUnlock:
   - {fileID: 1294757069}
   _infoPanel: {fileID: 247415449}
-  _enemyHeroName: aba
+  _enemyHeroNames:
+  - aaaa
+  - bbbb
   _levelCompositeRoot: {fileID: 624564228}
 --- !u!114 &243199679
 MonoBehaviour:
@@ -2940,7 +2942,7 @@ MonoBehaviour:
   _missionsToUnlock:
   - {fileID: 193320727}
   _infoPanel: {fileID: 247415449}
-  _enemyHeroName: 
+  _enemyHeroNames: []
   _levelCompositeRoot: {fileID: 624564228}
 --- !u!114 &1294757070
 MonoBehaviour:

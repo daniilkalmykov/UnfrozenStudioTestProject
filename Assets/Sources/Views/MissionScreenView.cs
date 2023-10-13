@@ -13,8 +13,15 @@ namespace Sources.Views
 
         public void Show(IHero playerHero, IMission mission)
         {
+            _playerHeroes.text = string.Empty;
+            _enemyHeroes.text = string.Empty;
+            _description.text = string.Empty;
+            
             _playerHeroes.text = playerHero.Name;
-            _enemyHeroes.text = mission.EnemyHero.Name;
+            
+            foreach (var missionEnemyHero in mission.EnemyHeroes)
+                _enemyHeroes.text += missionEnemyHero.Name + '\n';
+            
             _description.text = mission.PlayingDescription;
         }
     }
