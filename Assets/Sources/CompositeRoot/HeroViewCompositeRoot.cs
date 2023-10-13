@@ -33,7 +33,8 @@ namespace Sources.CompositeRoot
             
             _heroView = GetComponent<HeroView>();
             _gameButton = GetComponent<GameButton>();
-
+            
+            _gameButton.Init();
             _gameButton.Clicked += OnClicked;
 
             _heroView.Show(_hero);
