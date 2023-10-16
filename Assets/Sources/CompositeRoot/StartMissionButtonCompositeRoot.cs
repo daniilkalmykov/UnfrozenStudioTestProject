@@ -16,13 +16,13 @@ namespace Sources.CompositeRoot
         private void OnEnable()
         {
             if (_playerCompositeRoot != null)
-                _playerCompositeRoot.HeroSet += OnHeroSet;
+                _playerCompositeRoot.CurrentHeroesChanged += OnCurrentHeroesChanged;
         }
 
         private void OnDisable()
         {
             if (_playerCompositeRoot == null)
-                _playerCompositeRoot.HeroSet -= OnHeroSet;
+                _playerCompositeRoot.CurrentHeroesChanged -= OnCurrentHeroesChanged;
         }
 
         public override void Compose()
@@ -33,7 +33,7 @@ namespace Sources.CompositeRoot
             _gameButton.Button.interactable = false;
 
             _gameButton.Clicked += OnClicked;
-            _playerCompositeRoot.HeroSet += OnHeroSet;
+            _playerCompositeRoot.CurrentHeroesChanged += OnCurrentHeroesChanged;
         }
 
         private void OnClicked()
@@ -46,7 +46,7 @@ namespace Sources.CompositeRoot
             _missionInfoPanelView.gameObject.SetActive(false);
         }
 
-        private void OnHeroSet()
+        private void OnCurrentHeroesChanged()
         {
             _gameButton.Button.interactable = _levelCompositeRoot.Level.CurrentMission.PlayerHeroesAmount ==
                                               _playerCompositeRoot.GetAmountOfHeroes();

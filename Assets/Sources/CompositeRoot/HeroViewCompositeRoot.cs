@@ -14,6 +14,7 @@ namespace Sources.CompositeRoot
         private HeroView _heroView;
         private GameButton _gameButton;
         private Hero _hero;
+        private bool _isPicked;
 
         private void OnEnable()
         {
@@ -42,7 +43,18 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _playerCompositeRoot.TryAddHero(_hero);
+            print("AAAAA");
+            
+            if (_isPicked)
+            {
+                _playerCompositeRoot.TryRemoveHero(_hero);
+                _isPicked = false;
+            }
+            else
+            {
+                _playerCompositeRoot.TryAddHero(_hero);
+                _isPicked = true;
+            }
         }
     }
 }
