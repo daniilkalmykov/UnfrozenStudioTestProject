@@ -14,11 +14,6 @@ namespace Sources.CompositeRoot
 
         public IEnumerable<IHero> CurrentHeroes => _currentHeroes;
 
-        private void Update()
-        {
-            print(_currentHeroes.Count);
-        }
-
         public void TryAddHero(IHero newHero)
         {
             _currentHeroes.Add(newHero ?? throw new ArgumentNullException());
