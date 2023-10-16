@@ -20,6 +20,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private string[] _enemyHeroNames;
         [SerializeField] private LevelCompositeRoot _levelCompositeRoot;
         [SerializeField] private int _playerHeroesAmount;
+        [SerializeField] private List<HeroViewCompositeRoot> _heroViewCompositeRoots;
 
         private Mission _mission;
         private GameButton _gameButton;
@@ -43,7 +44,7 @@ namespace Sources.CompositeRoot
                 .Cast<IMission>().ToList();
 
             _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name,
-                enemyHeroes, _playerHeroesAmount);
+                enemyHeroes, _playerHeroesAmount, _heroViewCompositeRoots.Select(root => root.Hero));
             
             _mission.StatusChanged += OnStatusChanged;
             
@@ -73,7 +74,6 @@ namespace Sources.CompositeRoot
             _infoPanel.Set(_mission);
 
             _levelCompositeRoot.Level.SetCurrentMission(_mission);
-            //_mission.Complete();
         }
     }
 }

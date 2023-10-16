@@ -16,6 +16,8 @@ namespace Sources.CompositeRoot
         private Hero _hero;
         private bool _isPicked;
 
+        public IHero Hero => _hero;
+
         private void OnEnable()
         {
             if (_gameButton != null)

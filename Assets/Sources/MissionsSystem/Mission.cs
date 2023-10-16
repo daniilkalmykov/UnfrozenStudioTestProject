@@ -24,7 +24,7 @@ namespace Sources.MissionsSystem
             Name = name ?? throw new ArgumentNullException();
             _enemyHeroes = heroes ?? throw new ArgumentNullException();
             PlayerHeroesAmount = playerHeroesAmount;
-            HeroesToUnlock = heroesToUnlock ?? throw new ArgumentNullException();
+            HeroesToUnlock = heroesToUnlock;
         }
 
         public event Action StatusChanged;
