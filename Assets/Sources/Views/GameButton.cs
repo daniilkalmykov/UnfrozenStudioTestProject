@@ -15,21 +15,29 @@ namespace Sources.Views
 
         private void OnEnable()
         {
-            if (Button != null)
-                Button.onClick.AddListener(() => Clicked?.Invoke());
+            if (Button == null)
+                return;
+            
+            Button.onClick.RemoveAllListeners();
+            Button.onClick.AddListener(Call);
         }
 
         private void OnDisable()
         {
             if (Button != null)
-                Button.onClick.RemoveListener(() => Clicked?.Invoke());
+                Button.onClick.RemoveListener(Call);
         }
 
         public void Init()
         {
             Button = GetComponent<Button>();
 
-            Button.onClick.AddListener(() => Clicked?.Invoke());
+            Button.onClick.AddListener(Call);
+        }
+
+        void Call()
+        {
+            Clicked?.Invoke();
         }
     }
 }

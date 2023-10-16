@@ -18,8 +18,11 @@ namespace Sources.CompositeRoot
 
         private void OnEnable()
         {
-            if(_gameButton != null)
+            if (_gameButton != null)
+            {
+                _gameButton.Clicked -= OnClicked;
                 _gameButton.Clicked += OnClicked;
+            }
         }
 
         private void OnDisable()
@@ -43,8 +46,6 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            print("AAAAA");
-            
             if (_isPicked)
             {
                 _playerCompositeRoot.TryRemoveHero(_hero);
