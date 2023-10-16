@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sources.Views;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private LevelCompositeRoot _levelCompositeRoot;
         [SerializeField] private PlayerCompositeRoot _playerCompositeRoot;
         [SerializeField] private MissionScreenView _missionScreenView;
+        [SerializeField] private List<HeroViewCompositeRoot> _heroViewCompositeRoots;
         
         private GameButton _gameButton;
 
@@ -35,8 +37,13 @@ namespace Sources.CompositeRoot
         private void OnClicked()
         {
             _levelCompositeRoot.Level.CurrentMission.Complete(_playerCompositeRoot.CurrentHeroes);
-
             _playerCompositeRoot.ClearCurrentHeroes();
+            
+            foreach (var heroViewCompositeRoot in _heroViewCompositeRoots)
+            {
+                heroViewCompositeRoot.ResetOptions();
+            }            
+            
             _missionScreenView.gameObject.SetActive(false);
         }
     }

@@ -57,5 +57,10 @@ namespace Sources.CompositeRoot
                 _isPicked = true;
             }
         }
+
+        public void ResetOptions()
+        {
+            _isPicked = false;
+        }
     }
 }

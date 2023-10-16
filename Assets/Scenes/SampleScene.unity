@@ -3931,6 +3931,11 @@ MonoBehaviour:
   _levelCompositeRoot: {fileID: 624564228}
   _playerCompositeRoot: {fileID: 2112381145}
   _missionScreenView: {fileID: 690394388}
+  _heroViewCompositeRoots:
+  - {fileID: 1237851539}
+  - {fileID: 465589256}
+  - {fileID: 898987767}
+  - {fileID: 1696830112}
 --- !u!114 &1887250458
 MonoBehaviour:
   m_ObjectHideFlags: 0

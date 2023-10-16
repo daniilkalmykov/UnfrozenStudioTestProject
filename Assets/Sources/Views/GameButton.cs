@@ -18,6 +18,7 @@ namespace Sources.Views
             if (Button == null)
                 return;
             
+            Button.onClick.RemoveAllListeners();
             Button.onClick.AddListener(() => Clicked?.Invoke());
         }
 
