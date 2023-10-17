@@ -11,7 +11,7 @@ namespace Sources.MissionsSystem
         string PlayingDescription { get; }
         IEnumerable<IHero> EnemyHeroes { get; }
         int PlayerHeroesAmount { get; }
-        IEnumerable<IHero> HeroesToUnlock { get; }
+        IReadOnlyList<IHero> HeroesToUnlock { get; }
         
         void SetNewStatus(MissionStatus status);
         void Complete(IEnumerable<IHero> heroes);

@@ -11,6 +11,7 @@ namespace Sources.CompositeRoot
         [SerializeField] private PlayerCompositeRoot _playerCompositeRoot;
         [SerializeField] private MissionScreenView _missionScreenView;
         [SerializeField] private List<HeroViewCompositeRoot> _heroViewCompositeRoots;
+        [SerializeField] private List<HeroView> _heroViews;
         
         private GameButton _gameButton;
 
@@ -36,13 +37,22 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _levelCompositeRoot.Level.CurrentMission.Complete(_playerCompositeRoot.CurrentHeroes);
+            var currentMission = _levelCompositeRoot.Level.CurrentMission;
+
+            currentMission.Complete(_playerCompositeRoot.CurrentHeroes);
             _playerCompositeRoot.ClearCurrentHeroes();
             
             foreach (var heroViewCompositeRoot in _heroViewCompositeRoots)
-            {
                 heroViewCompositeRoot.ResetOptions();
-            }            
+            
+            for (var i = 0; i < currentMission.HeroesToUnlock.Count; i++)
+            {
+                _heroViews[i].gameObject.SetActive(true);
+                _heroViews[i].Show(currentMission.HeroesToUnlock[i]);
+            }
+
+            for (var i = currentMission.HeroesToUnlock.Count; i < _heroViews.Count; i++)
+                _heroViews[i].gameObject.SetActive(false);
             
             _missionScreenView.gameObject.SetActive(false);
         }

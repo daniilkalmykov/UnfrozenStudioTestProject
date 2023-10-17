@@ -43,8 +43,11 @@ namespace Sources.CompositeRoot
             var missions = _missionsToUnlock.Select(missionCompositeRoot => missionCompositeRoot._mission)
                 .Cast<IMission>().ToList();
 
+            var heroesToUnlock = _heroViewCompositeRoots.Select(heroViewCompositeRoot => heroViewCompositeRoot.Hero)
+                .ToList();
+
             _mission = new Mission(_description, _playingDescription, _pointsAmount, _status, missions, _name,
-                enemyHeroes, _playerHeroesAmount, _heroViewCompositeRoots.Select(root => root.Hero));
+                enemyHeroes, _playerHeroesAmount, heroesToUnlock);
             
             _mission.StatusChanged += OnStatusChanged;
             

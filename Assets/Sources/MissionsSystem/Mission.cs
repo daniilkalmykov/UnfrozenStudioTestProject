@@ -11,10 +11,11 @@ namespace Sources.MissionsSystem
         private readonly List<IMission> _missionsToUnlock;
         private readonly int _pointsAmount;
         private readonly List<IHero> _enemyHeroes;
+        private readonly List<IHero> _heroesToUnlock;
 
         public Mission(string description, string playingDescription,
             int pointsAmount, MissionStatus status, List<IMission> missionsToUnlock, string name, List<IHero> heroes,
-            int playerHeroesAmount, IEnumerable<IHero> heroesToUnlock)
+            int playerHeroesAmount, List<IHero> heroesToUnlock)
         {
             Description = description ?? throw new ArgumentNullException();
             PlayingDescription = playingDescription ?? throw new ArgumentNullException();
@@ -24,7 +25,7 @@ namespace Sources.MissionsSystem
             Name = name ?? throw new ArgumentNullException();
             _enemyHeroes = heroes ?? throw new ArgumentNullException();
             PlayerHeroesAmount = playerHeroesAmount;
-            HeroesToUnlock = heroesToUnlock;
+            _heroesToUnlock = heroesToUnlock;
         }
 
         public event Action StatusChanged;
@@ -35,7 +36,7 @@ namespace Sources.MissionsSystem
         public int PlayerHeroesAmount { get; }
         public MissionStatus Status { get; private set; }
         public IEnumerable<IHero> EnemyHeroes => _enemyHeroes;
-        public IEnumerable<IHero> HeroesToUnlock { get; }
+        public IReadOnlyList<IHero> HeroesToUnlock => _heroesToUnlock;
 
         public void SetNewStatus(MissionStatus status)
         {
