@@ -12,7 +12,8 @@ namespace Sources.CompositeRoot
         [SerializeField] private MissionScreenView _missionScreenView;
         [SerializeField] private List<HeroViewCompositeRoot> _heroViewCompositeRoots;
         [SerializeField] private List<HeroView> _heroViews;
-        
+        [SerializeField] private List<ChooseHeroButtonCompositeRoot> _chooseHeroButtonCompositeRoots;
+                    
         private GameButton _gameButton;
 
         private void OnEnable()
@@ -49,6 +50,8 @@ namespace Sources.CompositeRoot
             {
                 _heroViews[i].gameObject.SetActive(true);
                 _heroViews[i].Show(currentMission.HeroesToUnlock[i]);
+
+                _chooseHeroButtonCompositeRoots[i].SetNewHero(currentMission.HeroesToUnlock[i]);
             }
 
             for (var i = currentMission.HeroesToUnlock.Count; i < _heroViews.Count; i++)

@@ -20,11 +20,11 @@ namespace Sources.CompositeRoot
 
         private void OnEnable()
         {
-            if (_gameButton != null)
-            {
-                _gameButton.Clicked -= OnClicked;
-                _gameButton.Clicked += OnClicked;
-            }
+            if (_gameButton == null)
+                return;
+            
+            _gameButton.Clicked -= OnClicked;
+            _gameButton.Clicked += OnClicked;
         }
 
         private void OnDisable()
@@ -44,18 +44,25 @@ namespace Sources.CompositeRoot
             _gameButton.Clicked += OnClicked;
 
             _heroView.Show(_hero);
+            _playerCompositeRoot.HeroChanged += OnHeroChanged;
+        }
+
+        private void OnHeroChanged(Hero hero)
+        {
+            if (_hero == hero)
+                gameObject.SetActive(true);
         }
 
         private void OnClicked()
         {
             if (_isPicked)
             {
-                _playerCompositeRoot.TryRemoveHero(_hero);
+                _playerCompositeRoot.TryRemoveCurrentHero(_hero);
                 _isPicked = false;
             }
             else
             {
-                _playerCompositeRoot.TryAddHero(_hero);
+                _playerCompositeRoot.TryAddCurrentHero(_hero);
                 _isPicked = true;
             }
         }

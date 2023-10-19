@@ -7,21 +7,31 @@ namespace Sources.CompositeRoot
     internal sealed class PlayerCompositeRoot : CompositeRoot
     {
         private readonly HashSet<IHero> _currentHeroes = new();
-        
-        private List<Hero> _heroes = new();
+        private readonly List<Hero> _heroes = new();
 
         public event Action CurrentHeroesChanged;
+        public event Action<Hero> HeroChanged;
 
         public IEnumerable<IHero> CurrentHeroes => _currentHeroes;
 
-        public void TryAddHero(IHero newHero)
+        public void TryAddHero(IHero hero)
+        {
+            if (hero is Hero newHero)
+                _heroes.Add(newHero);
+            else
+                throw new ArgumentNullException();
+
+            HeroChanged?.Invoke(newHero);
+        }
+        
+        public void TryAddCurrentHero(IHero newHero)
         {
             _currentHeroes.Add(newHero ?? throw new ArgumentNullException());
             
             CurrentHeroesChanged?.Invoke();
         }
 
-        public void TryRemoveHero(IHero hero)
+        public void TryRemoveCurrentHero(IHero hero)
         {
             if (hero == null || _currentHeroes.Contains(hero) == false)
                 throw new ArgumentNullException();

@@ -566,7 +566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.005872281, y: 0.28}
   m_AnchorMax: {x: 0.053000003, y: 0.7133318}
-  m_AnchoredPosition: {x: 1.7407227, y: 0.14891052}
+  m_AnchoredPosition: {x: 1.7407228, y: 0}
   m_SizeDelta: {x: 1.2817078, y: 1.3300018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168355765
@@ -2587,7 +2587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25.7}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 188, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596766696
@@ -2771,7 +2771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1194762, y: 0.11687554}
   m_AnchorMax: {x: 0.88052386, y: 0.896}
-  m_AnchoredPosition: {x: 0, y: -1.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.5, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690394386
@@ -3414,6 +3414,7 @@ GameObject:
   - component: {fileID: 1213806252}
   - component: {fileID: 1213806251}
   - component: {fileID: 1213806250}
+  - component: {fileID: 1213806255}
   m_Layer: 5
   m_Name: HeroView (4)
   m_TagString: Untagged
@@ -3551,6 +3552,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213806247}
   m_CullTransparentMesh: 1
+--- !u!114 &1213806255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213806247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b1dec25944d48a9b6e5408a2adb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCompositeRoot: {fileID: 2112381145}
 --- !u!1 &1237851535
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,6 +4073,10 @@ MonoBehaviour:
   _compositeRoots:
   - {fileID: 624564228}
   - {fileID: 2112381145}
+  - {fileID: 1587952708}
+  - {fileID: 2144848822}
+  - {fileID: 1693435942}
+  - {fileID: 1213806255}
   - {fileID: 1237851539}
   - {fileID: 465589256}
   - {fileID: 898987767}
@@ -4103,7 +4121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63, y: -18.396896}
+  m_AnchoredPosition: {x: -63, y: 0}
   m_SizeDelta: {x: 124.775085, y: 31.193802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537468325
@@ -4217,6 +4235,7 @@ GameObject:
   - component: {fileID: 1587952705}
   - component: {fileID: 1587952704}
   - component: {fileID: 1587952703}
+  - component: {fileID: 1587952708}
   m_Layer: 5
   m_Name: HeroView (1)
   m_TagString: Untagged
@@ -4354,6 +4373,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587952700}
   m_CullTransparentMesh: 1
+--- !u!114 &1587952708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587952700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b1dec25944d48a9b6e5408a2adb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCompositeRoot: {fileID: 2112381145}
 --- !u!1 &1670378272
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,6 +4468,7 @@ GameObject:
   - component: {fileID: 1693435939}
   - component: {fileID: 1693435938}
   - component: {fileID: 1693435937}
+  - component: {fileID: 1693435942}
   m_Layer: 5
   m_Name: HeroView (3)
   m_TagString: Untagged
@@ -4573,6 +4606,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693435934}
   m_CullTransparentMesh: 1
+--- !u!114 &1693435942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693435934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b1dec25944d48a9b6e5408a2adb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCompositeRoot: {fileID: 2112381145}
 --- !u!1 &1696830108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4594,7 +4640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696830109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4612,10 +4658,10 @@ RectTransform:
   m_Father: {fileID: 168355764}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 33.070198, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696830110
 MonoBehaviour:
@@ -5179,7 +5225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.287575, y: -18.396896}
+  m_AnchoredPosition: {x: 63.287575, y: 0}
   m_SizeDelta: {x: 124.7751, y: 31.193802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716554707
@@ -5520,7 +5566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 15}
+  m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887250457
@@ -5548,6 +5594,11 @@ MonoBehaviour:
   - {fileID: 2144848817}
   - {fileID: 1693435937}
   - {fileID: 1213806250}
+  _chooseHeroButtonCompositeRoots:
+  - {fileID: 1587952708}
+  - {fileID: 2144848822}
+  - {fileID: 1693435942}
+  - {fileID: 1213806255}
 --- !u!114 &1887250458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5812,7 +5863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100, y: 25}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081725363
@@ -5951,7 +6002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 15}
+  m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102082307
@@ -6122,6 +6173,7 @@ GameObject:
   - component: {fileID: 2144848819}
   - component: {fileID: 2144848818}
   - component: {fileID: 2144848817}
+  - component: {fileID: 2144848822}
   m_Layer: 5
   m_Name: HeroView (2)
   m_TagString: Untagged
@@ -6259,3 +6311,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144848814}
   m_CullTransparentMesh: 1
+--- !u!114 &2144848822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144848814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b1dec25944d48a9b6e5408a2adb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCompositeRoot: {fileID: 2112381145}
