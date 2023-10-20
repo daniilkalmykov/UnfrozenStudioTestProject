@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Sources.HeroesSystem;
 
+[assembly: InternalsVisibleTo("Assembly-CSharp")]
 namespace Sources.CharactersSystem
 {
     internal sealed class Character : ICharacter
     {
         private readonly HashSet<IHero> _currentHeroes = new();
-        private readonly List<IHero> _heroes = new();
+        private readonly HashSet<IHero> _heroes = new();
         
         public event Action CurrentHeroesChanged;
         public event Action<IHero> HeroChanged;

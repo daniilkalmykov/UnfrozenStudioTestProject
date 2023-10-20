@@ -1,55 +1,16 @@
-using System;
-using System.Collections.Generic;
-using Sources.HeroesSystem;
+using Sources.CharactersSystem;
 
 namespace Sources.CompositeRoot
 {
     internal sealed class PlayerCompositeRoot : CompositeRoot
     {
-        private readonly HashSet<IHero> _currentHeroes = new();
-        private readonly List<Hero> _heroes = new();
+        private Character _character;
+        public ICharacter Character => _character;
 
-        public event Action CurrentHeroesChanged;
-        public event Action<Hero> HeroChanged;
-
-        public IEnumerable<IHero> CurrentHeroes => _currentHeroes;
-
-        public void TryAddHero(IHero hero)
-        {
-            if (hero is Hero newHero)
-                _heroes.Add(newHero);
-            else
-                throw new ArgumentNullException();
-
-            HeroChanged?.Invoke(newHero);
-        }
-        
-        public void TryAddCurrentHero(IHero newHero)
-        {
-            _currentHeroes.Add(newHero ?? throw new ArgumentNullException());
-            
-            CurrentHeroesChanged?.Invoke();
-        }
-
-        public void TryRemoveCurrentHero(IHero hero)
-        {
-            if (hero == null || _currentHeroes.Contains(hero) == false)
-                throw new ArgumentNullException();
-            
-            _currentHeroes.Remove(hero);
-            
-            CurrentHeroesChanged?.Invoke();
-        }
-
-        public int GetAmountOfHeroes() => _currentHeroes.Count;
-        
-        public void ClearCurrentHeroes()
-        {
-            _currentHeroes.Clear();
-        }
-        
         public override void Compose()
         {
+            _character = new Character();
+
             //Init heroes from xml
         }
     }

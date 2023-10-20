@@ -43,7 +43,7 @@ namespace Sources.CompositeRoot
 
         private void OnClicked()
         {
-            _playerCompositeRoot.TryAddHero(_hero);
+            _playerCompositeRoot.Character.TryAddHero(_hero);
             gameObject.SetActive(false);
         }
     }

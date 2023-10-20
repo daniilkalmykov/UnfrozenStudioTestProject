@@ -18,7 +18,7 @@ namespace Sources.Views
         private void OnDisable()
         {
             if (_playerCompositeRoot != null)
-                _playerCompositeRoot.CurrentHeroesChanged -= OnCurrentHeroesChanged;
+                _playerCompositeRoot.Character.CurrentHeroesChanged -= OnCurrentHeroesChanged;
         }
 
         public void Set(IMission mission)
@@ -29,12 +29,13 @@ namespace Sources.Views
             _description.text = mission.Description;
             _pickedHeroes.text = "0/" + mission.PlayerHeroesAmount;
             
-            _playerCompositeRoot.CurrentHeroesChanged += OnCurrentHeroesChanged;
+            _playerCompositeRoot.Character.CurrentHeroesChanged += OnCurrentHeroesChanged;
         }
 
         private void OnCurrentHeroesChanged()
         {
-            _pickedHeroes.text = $"{_playerCompositeRoot.GetAmountOfHeroes()}/" + _currentMission.PlayerHeroesAmount;
+            _pickedHeroes.text = $"{_playerCompositeRoot.Character.GetAmountOfHeroes()}/" +
+                                 _currentMission.PlayerHeroesAmount;
         }
     }
 }

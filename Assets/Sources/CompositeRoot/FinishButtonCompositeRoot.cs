@@ -40,8 +40,8 @@ namespace Sources.CompositeRoot
         {
             var currentMission = _levelCompositeRoot.Level.CurrentMission;
 
-            currentMission.Complete(_playerCompositeRoot.CurrentHeroes);
-            _playerCompositeRoot.ClearCurrentHeroes();
+            currentMission.Complete(_playerCompositeRoot.Character.CurrentHeroes);
+            _playerCompositeRoot.Character.ClearCurrentHeroes();
             
             foreach (var heroViewCompositeRoot in _heroViewCompositeRoots)
                 heroViewCompositeRoot.ResetOptions();

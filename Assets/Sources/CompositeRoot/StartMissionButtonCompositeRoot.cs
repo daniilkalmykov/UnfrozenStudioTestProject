@@ -16,13 +16,13 @@ namespace Sources.CompositeRoot
         private void OnEnable()
         {
             if (_playerCompositeRoot != null)
-                _playerCompositeRoot.CurrentHeroesChanged += OnCurrentHeroesChanged;
+                _playerCompositeRoot.Character.CurrentHeroesChanged += OnCurrentHeroesChanged;
         }
 
         private void OnDisable()
         {
             if (_playerCompositeRoot == null)
-                _playerCompositeRoot.CurrentHeroesChanged -= OnCurrentHeroesChanged;
+                _playerCompositeRoot.Character.CurrentHeroesChanged -= OnCurrentHeroesChanged;
         }
 
         public override void Compose()
@@ -33,7 +33,7 @@ namespace Sources.CompositeRoot
             _gameButton.Button.interactable = false;
 
             _gameButton.Clicked += OnClicked;
-            _playerCompositeRoot.CurrentHeroesChanged += OnCurrentHeroesChanged;
+            _playerCompositeRoot.Character.CurrentHeroesChanged += OnCurrentHeroesChanged;
         }
 
         private void OnClicked()
@@ -41,7 +41,7 @@ namespace Sources.CompositeRoot
             _gameButton.Button.interactable = false;
             
             _missionScreen.gameObject.SetActive(true);
-            _missionScreen.Show(_playerCompositeRoot.CurrentHeroes, _levelCompositeRoot.Level.CurrentMission);
+            _missionScreen.Show(_playerCompositeRoot.Character.CurrentHeroes, _levelCompositeRoot.Level.CurrentMission);
             
             _missionInfoPanelView.gameObject.SetActive(false);
         }
@@ -49,7 +49,7 @@ namespace Sources.CompositeRoot
         private void OnCurrentHeroesChanged()
         {
             _gameButton.Button.interactable = _levelCompositeRoot.Level.CurrentMission.PlayerHeroesAmount ==
-                                              _playerCompositeRoot.GetAmountOfHeroes();
+                                              _playerCompositeRoot.Character.GetAmountOfHeroes();
         }
     }
 }

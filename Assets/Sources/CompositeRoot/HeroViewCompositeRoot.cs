@@ -44,10 +44,10 @@ namespace Sources.CompositeRoot
             _gameButton.Clicked += OnClicked;
 
             _heroView.Show(_hero);
-            _playerCompositeRoot.HeroChanged += OnHeroChanged;
+            _playerCompositeRoot.Character.HeroChanged += OnHeroChanged;
         }
 
-        private void OnHeroChanged(Hero hero)
+        private void OnHeroChanged(IHero hero)
         {
             if (_hero == hero)
                 gameObject.SetActive(true);
@@ -57,12 +57,12 @@ namespace Sources.CompositeRoot
         {
             if (_isPicked)
             {
-                _playerCompositeRoot.TryRemoveCurrentHero(_hero);
+                _playerCompositeRoot.Character.TryRemoveCurrentHero(_hero);
                 _isPicked = false;
             }
             else
             {
-                _playerCompositeRoot.TryAddCurrentHero(_hero);
+                _playerCompositeRoot.Character.TryAddCurrentHero(_hero);
                 _isPicked = true;
             }
         }
